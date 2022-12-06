@@ -15,17 +15,19 @@
             </th>
             <td class="flex">
               <div>
-                <input type="text" class="Form-Item-Input w100" name="last_name" value="{{ old('last_name') }}">
+                <input type="text" class="Form-Item-Input w100" name="last_name" value="{{ old('last_name') }}" onblur="check(this)" id="苗字">
                 <p class="placeholder">例）山田</p>
+                <span class="error-text mt-20" id="苗字error"></span>
                 @error('last_name')
-                <p class="error-text">{{ $message }}</p>
+                <span class="error-text ml0">{{ $message }}</span>
                 @enderror
               </div>
               <div class="ml20">
-                <input type="text" class="Form-Item-Input w100" name="first_name" value="{{ old('first_name') }}">
+                <input type="text" class="Form-Item-Input w100" name="first_name" value="{{ old('first_name') }}" onblur="check(this)" id="名前">
                 <p class="placeholder">例）太郎</p>
+                <span class="error-text mt-20" id="名前error"></span>
                 @error('first_name')
-                <p class="error-text">{{ $message }}</p>
+                <span class="error-text ml0">{{ $message }}</span>
                 @enderror
               </div>
             </td>
@@ -46,10 +48,11 @@
               <p class="th-text mt50">メールアドレス<span class="red">※</span></p> 
             </th>
             <td colspan="2">
-              <input type="text" class="Form-Item-Input w100" name="email" value="{{ old('email') }}" >
+              <input type="text" class="Form-Item-Input w100" name="email" value="{{ old('email') }}" onblur="check(this)" id="メールアドレス">
               <p class="placeholder">例）test@example.com</p>
+              <span class="error-text mt-20" id="メールアドレスerror"></span>
               @error('email')
-              <p class="error-text">{{ $message }}</p>
+              <span class="error-text ml0">{{ $message }}</span>
               @enderror
             </td>
           </tr>
@@ -60,10 +63,11 @@
             <td colspan="2" class="flex">
               <p class="post-mark">〒</p>
               <div>
-                <input type="text" class="Form-Item-Input w490" id="郵便番号" onKeyUp="$('#郵便番号').zip2addr('#住所');" name="postcode" value="{{ old('postcode') }}">
+                <input type="text" class="Form-Item-Input w490" id="郵便番号" onKeyUp="$('#郵便番号').zip2addr('#住所');" name="postcode" value="{{ old('postcode') }}" onblur="check(this)" id="郵便番号">
                 <p class="placeholder">例）123-4567</p>
+                <span class="error-text mt-20" id="郵便番号error"></span>
                 @error('postcode')
-                <p class="error-text">{{ $message }}</p>
+                <span class="error-text ml0">{{ $message }}</span>
                 @enderror
               </div>
             </td>
@@ -73,10 +77,11 @@
               <p class="th-text w240 mt20">住所<span class="red">※</span></p>
             </th>
             <td>
-              <input type="text" class="Form-Item-Input w100" id="住所" name="address" value="{{ old('address') }}">
+              <input type="text" class="Form-Item-Input w100" id="住所" name="address" value="{{ old('address') }}" onblur="check(this)" id="住所">
               <p class="placeholder">例）東京都渋谷区千駄ヶ谷1-2-3</p>
+              <span class="error-text" id="住所error"></span>
               @error('address')
-              <p class="error-text">{{ $message }}</p>
+              <span class="error-text ml0">{{ $message }}</span>
               @enderror
             </td>
           </tr>
@@ -86,7 +91,7 @@
             </th>
             <td>
               <input type="text" class="Form-Item-Input w100"  name="building_name" value="{{ old('building_name') }}">
-              <p class="placeholder">例）千駄ヶ谷マンション101</p>
+              <p class="placeholder mb20">例）千駄ヶ谷マンション101</p>
             </td>
           </tr>
           <tr>
@@ -94,9 +99,10 @@
               <p class="th-text w240 mt20">ご意見<span class="red">※</span></p>
             </th>
             <td>
-              <textarea class="Form-Item-Textarea mt20" name="opinion"> {{ old('opinion') }} </textarea>
+              <textarea class="Form-Item-Textarea mt20" name="opinion" onblur="check(this)" id="ご意見">{{old('opinion')}}</textarea><br>
+              <span class="error-text" id="ご意見error"></span>
               @error('opinion')
-              <p class="error-text mt0">{{ $message }}</p>
+              <span class="error-text ml0">{{$message}}</span>
               @enderror
             </td>
           </tr>
